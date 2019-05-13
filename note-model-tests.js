@@ -1,11 +1,12 @@
-(function(exports) {
-  function testStoresTheTextInATextProperty() {
-    var note = new Note("testArguement");
+function textStoresTheText() {
+  var note = new Note("noteText");
+  assert.isEqual(note.text, "noteText");
+};
 
-    if (note.text !== "testArguement") {
-      throw new Error("Doesn't store text in .text property");
-    }
-  };
+function getTextReturnsTheText() {
+  var note = new Note("noteText");
+  assert.isEqual(note.getText(), "noteText");
+};
 
-  testStoresTheTextInATextProperty();
-})(this);
+textStoresTheText();
+getTextReturnsTheText();
