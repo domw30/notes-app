@@ -49,12 +49,17 @@ console.log('initializeNoteController');
 initializeNoteController();
 
 function testASingleNoteView() {
-  var note = new Note('Bambi');
-  // var noteList = new NoteList();
-  // noteList.createNewNote('Bambi');
-  var singleNoteView = new SingleNoteView(note);
-  var noteHtml = '<div>Bambi</div>';
-  assert.isTrue(singleNoteView.viewNote() === noteHtml);
-};
+  var note = new Note
+    var singleNoteView = new SingleNoteView(note);
+    assert.isTrue(singleNoteView.note, note);
+  };
 console.log('testASingleNoteView');
 testASingleNoteView();
+
+function testViewedInHtml() {
+  var note = new Note('Favourite drink: Fanta')
+    var singleNoteView = new SingleNoteView(note);
+  assert.isTrue(singleNoteView.viewNote(), '<div>Favourite drink: Fanta</div>');
+  };
+console.log('testViewedInHtml')
+testViewedInHtml();
