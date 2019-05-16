@@ -1,21 +1,20 @@
 var assert = {
-  isEqual: function(assert1, assert2) {
-    if (assert1 !== assert2) {
-      throw new Error("Assertion failed:" + assert1 + " does not equal " + assert2);
+  isTrue: function(assertionToCheck) {
+    if (!assertionToCheck) {
+      throw new Error("Assertion failed: " + assertionToCheck + " is not truthy");
     } else {
-      console.log(`PASS ${assert1} is equal to ${assert2}`)
+      console.log('- passed the test ✅')
     }
   },
-
-  isAnArray: function(assert1) {
-    if (!Array.isArray(assert1)) {
-      throw new Error("Assertion failed:" + assert1 + " is not an array");
+  arraysMatch: function(arrayOne, arrayTwo) {
+    if (arrayOne.length !== arrayTwo.length) {
+      throw new Error("Assertion failed: arrays are different lengths");
     }
-  },
-
-  isEmpty: function(assert1) {
-    if (!assert1.length === 0) {
-      throw new Error("Assertion failed:" + assert1 + " is not empty");
+    for (var i = 0; i < arrayOne.length; i++) {
+      if (arrayOne[i] !== arrayTwo[i]) {
+        throw new Error("Assertion failed: array elements are different");
+      }
     }
+    console.log('- passed the test ✅')
   }
 };

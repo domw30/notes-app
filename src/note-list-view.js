@@ -1,14 +1,21 @@
 (function(exports) {
-  function NoteListView(notelist) {
-    NOTELIST = notelist
-  }
-  var htmlString = ""
-  NoteListView.prototype.getHTML = function() {
-    NOTELIST.getList().map(function(note) {
-      htmlString = htmlString + `<li><div>${note.getText()}</div></li>`
-    });
-    return "<ul>" + htmlString + "</ul>"
-  };
 
-  exports.NoteListView = NoteListView
+  var NoteView = function(noteList) {
+    this.noteList = noteList.returnAll()
+  }
+
+  NoteView.prototype.htmlString = function() {
+    var htmlString = '<ul>'
+
+    for(var i = 0; i < this.noteList.length; i++) {
+        htmlString += '<li><div>' + this.noteList[i].displayText() + '</div></li>'
+    }
+
+    htmlString += '</ul>';
+
+    return htmlString
+  }
+
+  exports.NoteView = NoteView;
+
 })(this);

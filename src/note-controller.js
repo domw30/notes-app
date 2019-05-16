@@ -1,27 +1,24 @@
-(function(exports) {
-  function NoteController(NoteList, NoteListView) {
-    this.noteList = new NoteList();
-    this.noteListView = new NoteListView(this.noteList);
-  };
+(function(exports){
 
+var NoteController = function(notelist) {
+  notelist.createNewNote('Favourite drink: seltzer')
+  this.notelistview = new NoteView(notelist);
+};
 
-NoteController.prototype.updateview = function(){
-    this.noteList.addNote('Favourite drink: seltzer');
-    var element = document.getElementById("app");
-    const content = element.innerHTML;
-    element.innerHTML = this.noteListView.getHTML();
-  };
-
-
+NoteController.prototype = {
+  renderHTML: function () {
+    var noteHtml = this.notelistview.htmlString();
+    return noteHtml;
+  }
+};
 
 exports.NoteController = NoteController;
 })(this);
 
-
-var notecontroller = new NoteController(NoteList, NoteListView);
-
-notecontroller.updateview();
-
-// NoteList.prototype.addNote = function (noteText) {
-//   return this.list.push(new Note(noteText))
-// };
+window.onload = function() {
+  var element = document.getElementById('app');
+  var notelist = new NoteList;
+  var notecontroller = new NoteController(notelist);
+  // var singlenoteview = new SingleNoteView(note);
+  element.innerHTML = notecontroller.renderHTML();
+};
